@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -17,5 +18,14 @@ public class MainMenuHandler : MonoBehaviour
         }
         PlayerName.Instance.playerName = p_name;
         SceneManager.LoadScene(1);
+    }
+
+    public void Quit()
+    {
+#if UNITY_EDITOR
+        EditorApplication.ExitPlaymode();
+#else
+        Application.Quit()
+#endif
     }
 }
